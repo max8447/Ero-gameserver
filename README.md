@@ -35,6 +35,8 @@ added healing to builds
 
 added working upgrade benches
 
+fixed 3 guns spawning on factions chests instead of 2
+
 ## Installation
 
 1. Clone this repository or download it

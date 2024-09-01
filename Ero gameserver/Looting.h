@@ -765,9 +765,8 @@ char __fastcall SpawnLoot(ABuildingContainer* Object)
 	if (IsFactionChest)
 	{
 		std::unordered_set<UFortItemDefinition*> spawnedWeapons;
-		bool gunsSpawned = false;
 
-		for (size_t i = 0; i < 3; i++)
+		for (size_t i = 0; i < 2; i++)
 		{
 			ItemRow* Item;
 			do
@@ -777,24 +776,12 @@ char __fastcall SpawnLoot(ABuildingContainer* Object)
 
 			SpawnPickup(Loc, Item->Def, Item->DropCount, Item->LoadedAmmo, Flag, Source);
 			spawnedWeapons.insert(Item->Def);
-			gunsSpawned = true;
 
 			UFortAmmoItemDefinition* AmmoDef = (UFortAmmoItemDefinition*)((UFortWeaponRangedItemDefinition*)Item->Def)->GetAmmoWorldItemDefinition_BP();
 			if (AmmoDef && Item->Def != AmmoDef && AmmoDef->DropCount > 0)
 			{
 				SpawnPickup(Loc, AmmoDef, AmmoDef->DropCount, 0, Flag, Source);
 			}
-		}
-
-		if (!gunsSpawned)
-		{
-			ItemRow* Item;
-			do
-			{
-				Item = GetRandomItem(TierGroupStr, EFortItemType::WeaponRanged);
-			} while (!Item || !Item->Def);
-
-			SpawnPickup(Loc, Item->Def, Item->DropCount, Item->LoadedAmmo, Flag, Source);
 		}
 	}
 
