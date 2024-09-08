@@ -725,35 +725,35 @@ void ServerAttemptInteract(UFortControllerComponent_Interaction* Comp, AActor* R
             GiveItem(PC, NewDefinition, 1,CurrentHeldWeapon->GetMagazineAmmoCount());
         }
     }
-    //else if (ReceivingActor->IsA(AFortAthenaVehicle::StaticClass()))
-    //{
-    //    if (PC->MyFortPawn->IsInVehicle())
-    //    {
-    //        auto Vehicle = PC->MyFortPawn->GetVehicle();
-    //        if (Vehicle)
-    //        {
-    //            int SeatIdx = PC->MyFortPawn->GetVehicleSeatIndex();
-    //            auto WeaponComp = Vehicle->GetSeatWeaponComponent(SeatIdx);
-    //            if (WeaponComp)
-    //            {
-    //                if (WeaponComp->WeaponSeatDefinitions.IsValidIndex(SeatIdx))
-    //                {
-    //                    auto& Def = WeaponComp->WeaponSeatDefinitions[SeatIdx];
-    //                    if (Def.VehicleWeapon && Def.SeatIndex == SeatIdx)
-    //                    {
-    //                        GiveItem(PC, Def.VehicleWeapon, 1, 99999);
-    //                        FFortItemEntry* Entry = FindEntry(PC, Def.VehicleWeapon); // BAD
-    //                        if (Entry)
-    //                        {
-    //                            //PC->ServerExecuteInventoryItem(Entry->ItemGuid); // ClientEquipItem or else crash thanks
-// 
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
+    else if (ReceivingActor->IsA(AFortAthenaVehicle::StaticClass()))
+    {
+        if (PC->MyFortPawn->IsInVehicle())
+      {
+          auto Vehicle = PC->MyFortPawn->GetVehicle();
+            if (Vehicle)
+           {
+               int SeatIdx = PC->MyFortPawn->GetVehicleSeatIndex();
+               auto WeaponComp = Vehicle->GetSeatWeaponComponent(SeatIdx);
+              if (WeaponComp)
+              {
+                   if (WeaponComp->WeaponSeatDefinitions.IsValidIndex(SeatIdx))
+                   {
+                       auto& Def = WeaponComp->WeaponSeatDefinitions[SeatIdx];
+                       if (Def.VehicleWeapon && Def.SeatIndex == SeatIdx)
+                      {
+                           GiveItem(PC, Def.VehicleWeapon, 1, 99999);
+                           FFortItemEntry* Entry = FindEntry(PC, Def.VehicleWeapon);
+                           if (Entry)
+                         {
+                               PC->ServerExecuteInventoryItem(Entry->ItemGuid);
+
+                           }
+                       }
+                   }
+               }
+           }
+        }
+    }
 }
 
 void (*OnDamageServerOG)(ABuildingSMActor*, float, FGameplayTagContainer, FVector, FHitResult, AFortPlayerControllerAthena*, AActor*, FGameplayEffectContextHandle);
