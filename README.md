@@ -1,13 +1,11 @@
 ![image](https://github.com/user-attachments/assets/8c265350-d49e-4e83-8a30-dc241624fe2f)
 
 
-Ero gameserver s12 is some what of a rewrite of Eon gameserver thats fixes all the bugs/add stuff and makes its 1:1.
+Ero gameserver s12
+
+# ALL THE CREDITS GO TO EONGS
 
 ## Features
-
-Every thing that fortnite had at that time 1:1 proper
-
-proper looting and correct lootpool
 
 Deadpool bus
 
@@ -35,9 +33,9 @@ added healing to builds
 
 added working upgrade benches
 
-fixed 3 guns spawning on factions chests instead of 2
+fixed 3 guns spawning on factions chests instead of 2 ("fixed looting")
 
-added weapons boats
+added weapons boats (english pls also just fix all vehicle weapons what)
 
 ## Installation
 
